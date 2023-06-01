@@ -32,46 +32,6 @@ class config_rolling(self, sma=30, lma=60):
            f'close_{lma}_sma' 
         ]
         return INDICATORS
-    
-    # Model Paramters
-    A2C_PARAMS = {}
-
-# directory
-from __future__ import annotations
-
-# customized config from finrl.config.py
-class config_rolling(sma=30, lma=60): 
-    
-    DATA_SAVE_DIR = "datasets"
-    TRAINED_MODEL_DIR = "trained_models"
-    TENSORBOARD_LOG_DIR = "tensorboard_log"
-    RESULTS_DIR = "results"
-
-    # date format: '%Y-%m-%d'
-    TRAIN_START_DATE = "2014-01-06"  # bug fix: set Monday right, start date set 2014-01-01 ValueError: all the input array dimensions for the concatenation axis must match exactly, but along dimension 0, the array at index 0 has size 1658 and the array at index 1 has size 1657
-    TRAIN_END_DATE = "2020-07-31"
-
-    TEST_START_DATE = "2020-08-01"
-    TEST_END_DATE = "2021-10-01"
-
-    TRADE_START_DATE = "2021-11-01"
-    TRADE_END_DATE = "2021-12-01"
-
-    # stockstats technical indicator column names
-    # check https://pypi.org/project/stockstats/ for different names
-    def INDICATORS(sma=30, lma=60):
-      INDICATORS = [
-            "macd",
-            "boll_ub",
-            "boll_lb",
-            "rsi_30",
-            "cci_30",
-            "dx_30",
-            f"close_{sma}_sma",
-            f"close_{lma}_sma",
-      ]
-      return INDICATORS
-
 
     # Model Parameters
     A2C_PARAMS = {"n_steps": 5, "ent_coef": 0.01, "learning_rate": 0.0007}
@@ -101,4 +61,3 @@ class config_rolling(sma=30, lma=60):
         "eval_times": 64,  # bug fix:KeyError: 'eval_times' line 68, in get_model model.eval_times = model_kwargs["eval_times"]
     }
     RLlib_PARAMS = {"lr": 5e-5, "train_batch_size": 500, "gamma": 0.99}
-    
